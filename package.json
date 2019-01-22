@@ -1,0 +1,18 @@
+{
+  "name": "weather_app",
+  "version": "1.0.0",
+  "description": "A weather app that pulls the weather from open weather map api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Jacob Spade",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9",
+    "request": "^2.88.0"
+  }
+}
