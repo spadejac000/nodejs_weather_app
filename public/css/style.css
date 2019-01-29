@@ -1,0 +1,29 @@
+body {
+  background-image: url('https://authorrisingtide.files.wordpress.com/2019/01/weather.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -3;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, .3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+.the-content {
+  width: 400px;
+  margin: 0 auto;
+}
+
+form {
+  width: 100%;
+}
+
+.card {
+  width: 100%;
+}

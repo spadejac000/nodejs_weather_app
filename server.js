@@ -3,6 +3,7 @@ const request = require('request');
 
 const app = express();
 
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
 let city = 'Seattle';
@@ -13,7 +14,7 @@ app.get('/', (req, res) => {
   request(url, (error, response, body) => {
     
     let weather_json = JSON.parse(body);
-    console.log(weather_json.list[0]);
+    console.log('working');
 
     let weather = {
       city,
