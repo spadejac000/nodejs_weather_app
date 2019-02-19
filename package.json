@@ -4,15 +4,19 @@
   "description": "A weather app that pulls the weather from open weather map api",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Jacob Spade",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^4.1.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "nodemon": "^1.18.9",
+    "nodemon": "^1.18.10",
     "request": "^2.88.0"
   }
 }
