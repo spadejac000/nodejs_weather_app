@@ -1,10 +1,11 @@
 const express = require('express');
 const request = require('request');
+const bodyParser = require('body-parser');
+
 
 const app = express();
 
-app.use(express.static(__dirname + '/public'));
-app.set('view engine', 'ejs');
+app.use(bodyParser.json());
 
 let city = 'Los Angeles';
 let api = '26318328797296678be8b407dcc293ad';
@@ -15,7 +16,7 @@ app.get('/', (req, res) => {
     
     let weather_json = JSON.parse(body);
     console.log('working');
-
+ 
     let weather = {
       city,
       temperature: Math.round(weather_json.list[0].main.temp),
@@ -25,7 +26,8 @@ app.get('/', (req, res) => {
 
     let weather_data = {weather: weather}
 
-    res.render('weather', weather_data);
+    console.log(weather_data)
+    res.status(200).json(weather_data);
   });
 });
 
