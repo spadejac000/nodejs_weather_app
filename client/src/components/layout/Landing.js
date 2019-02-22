@@ -1,7 +1,22 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 class Landing extends Component {
+  constructor() {
+    super();
+    this.state = {
+      weather:
+        {
+          image: 'Poop',
+          city: 'Los Angeles',
+          temp: '75 degrees',
+          desc: 'It is sunny'
+        } 
+    }
+  }
+
   render() {
+    const {weather} = this.state;
     return (
       <div className="the-content">
 
@@ -18,8 +33,7 @@ class Landing extends Component {
 
             <div className="input-group-append">
               <button 
-                type="submit" 
-                onclick="showCity" 
+                type="submit"
                 className="btn btn-info mb-2 text-light"
               >
                 Check City
@@ -32,10 +46,10 @@ class Landing extends Component {
 
         <div className="card">
           <div className="card-body">
-            <img src="http://openweathermap.org/img/w/<%= weather.icon %>.png" />
-            <h2>City: city</h2>
-            <h3>Temperature: temp</h3>
-            <h3>Description: desc</h3>
+              <h1>{weather.image}</h1>
+              <h2>City: {weather.city}</h2>
+              <h3>Temperature: {weather.temp}</h3>
+              <h3>Description: {weather.desc}</h3>
           </div>
         </div>
 

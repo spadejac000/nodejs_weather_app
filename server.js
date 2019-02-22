@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
   request(url, (error, response, body) => {
     
     let weather_json = JSON.parse(body);
-    console.log('working');
  
     let weather = {
       city,
@@ -26,7 +25,6 @@ app.get('/', (req, res) => {
 
     let weather_data = {weather: weather}
 
-    console.log(weather_data)
     res.status(200).json(weather_data);
   });
 });
