@@ -20,14 +20,8 @@ export class Provider extends Component {
   componentDidMount() {
     console.log('componentDidMount...');
     axios.get('http://localhost:8000')
-      .then(res => {
-        this.setState({
-          city: res[0].data, 
-          temperature: res[1], 
-          photos: res[2],
-          icon: res[3].data
-        })
-      })
+      .then(response => response.json())
+      .then(json => console.log(json));
   }
 
   render() {
