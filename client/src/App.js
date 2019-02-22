@@ -3,6 +3,8 @@ import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import axios from 'axios';
 
+import {Provider} from './context';
+
 import Navbar from './components/layout/Navbar';
 import Overlay from './components/layout/Overlay';
 import Landing from './components/layout/Landing';
@@ -31,14 +33,16 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Overlay />
-          <Navbar />
-          <Landing temp={'75 degrees'} desc={"It is sunny"} city={"Los Angeles"} image={"poop"} />
-          <Footer />
-        </div>
-      </Router>
+      <Provider>
+        <Router>
+          <div className="App">
+            <Overlay />
+            <Navbar />
+            <Landing temp={'75 degrees'} desc={"It is sunny"} city={"Los Angeles"} image={"poop"} />
+            <Footer />
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }

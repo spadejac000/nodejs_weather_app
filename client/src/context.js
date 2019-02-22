@@ -9,11 +9,17 @@ const reducer = (state, action) => {
 
 export class Provider extends Component {
   state = {
+    weather: {
+      image: 'Poop',
+      city: 'Los Angeles',
+      temp: '75 degrees',
+      desc: 'It is sunny'
+    } 
   }
 
   componentDidMount() {
-
-    axios.get('localhost:8000')
+    console.log('componentDidMount...');
+    axios.get('http://localhost:8000')
       .then(res => {
         this.setState({
           city: res[0].data, 
