@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Consumer} from '../../context';
 
 class Landing extends Component {
 
   render() {
-    return(
-      <Consumer>
-        {value => {
-          const {weather} = value;
           return (
             <div className="the-content">
 
@@ -38,18 +33,15 @@ class Landing extends Component {
       
               <div className="card">
                 <div className="card-body">
-                    <h1>{weather.image}</h1>
-                    <h2>City: {weather.city}</h2>
-                    <h3>Temperature: {weather.temp}</h3>
-                    <h3>Description: {weather.desc}</h3>
+                    <h1></h1>
+                    <h2>City:</h2>
+                    <h3>Temperature:</h3>
+                    <h3>Description:</h3>
                 </div>
               </div>
       
             </div>
           )
-        }}
-      </Consumer>
-    )
   }
 }
 
