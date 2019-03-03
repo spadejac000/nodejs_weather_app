@@ -7,7 +7,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-let city = 'Los Angeles';
+let city = 'SEATTLE';
 let api = '26318328797296678be8b407dcc293ad';
 let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api}&units=imperial`;
 

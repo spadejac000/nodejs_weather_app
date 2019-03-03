@@ -1,19 +1,22 @@
-import {GET_WEATHER} from '../actions/types';
+import {GET_WEATHER, WEATHER_LOADING} from '../actions/types';
 
 const initialState = {
-  weather: {
-    image: 'poop',
-    temperature: '75 degrees',
-    city: 'Los Angeles',
-    description: 'It is sunny'
-  }
+  weather: {},
+  loading: false
 }
 
 export default function(state = initialState, action) {
   switch(action.type) {
     case GET_WEATHER:
       return {
-        ...state
+        ...state,
+        weather: action.payload,
+        loading: false
+      }
+    case WEATHER_LOADING:
+      return {
+        ...state,
+        loading: true
       }
     default:
       return state;
