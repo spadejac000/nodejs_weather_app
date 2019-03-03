@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {getWeather} from '../../actions/weatherActions';
 
 class Landing extends Component {
 
@@ -45,4 +47,8 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+const mapStateToProps = (state) => ({
+  weather: state.weather
+})
+
+export default connect(mapStateToProps, {getWeather})(Landing);
