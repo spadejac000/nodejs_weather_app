@@ -5,16 +5,13 @@ import PropTypes from 'prop-types';
 
 class Landing extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getWeather();
-  }
-
-  componentDidUpdate() {
-    console.log(this.props.weather.weather.weather)
   }
 
   render() {
     const {weather} = this.props.weather;
+    console.log(weather.weather)
     return (
       <div className="the-content">
 
@@ -44,7 +41,7 @@ class Landing extends Component {
 
         <div className="card">
           <div className="card-body">
-              <h1>{weather.image}</h1>
+              <h1>{weather.icon}</h1>
               <h2>City: {weather.city}</h2>
               <h3>Temperature: {weather.temperature}</h3>
               <h3>Description: {weather.description}</h3>

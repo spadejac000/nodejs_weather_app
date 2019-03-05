@@ -10,6 +10,9 @@ export const getWeather = () => dispatch => {
         type: GET_WEATHER,
         payload: res.data
       }))
+    .catch((err) => {
+      dispatch({type: "No Weather Found", payload: err})
+    });
 }
 
 export const setWeatherLoading = () => {

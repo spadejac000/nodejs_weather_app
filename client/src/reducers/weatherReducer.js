@@ -1,7 +1,7 @@
 import {GET_WEATHER, WEATHER_LOADING} from '../actions/types';
 
 const initialState = {
-  weather: {},
+  weather: '',
   loading: false
 }
 
