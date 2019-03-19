@@ -1,11 +1,13 @@
 const express = require('express');
 const request = require('request');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 let city = 'SEATTLE';
 let api = '26318328797296678be8b407dcc293ad';
@@ -24,6 +26,8 @@ app.get('/', (req, res) => {
     };
 
     let weather_data = {weather: weather}
+
+    console.log(weather_data)
 
     res.status(200).json(weather_data);
   });
