@@ -1,12 +1,5 @@
 import {GET_WEATHER, WEATHER_LOADING} from '../actions/types';
 
-// {
-//   city: "SEATTLE",
-//   temperature: 60,
-//   description: "clear sky",
-//   icon: "01n"
-//   }
-
 const initialState = {
   weather: '',
   loading: false

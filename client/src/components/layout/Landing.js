@@ -4,14 +4,24 @@ import {getWeather} from '../../actions/weatherActions';
 import PropTypes from 'prop-types';
 
 class Landing extends Component {
+  state = {
+    city: ''
+  }
 
   componentWillMount() {
     this.props.getWeather();
   }
 
+  onChange = (e) => {
+    this.setState({
+      city: e.target.value
+    });
+  }
+
   render() {
-    console.log(this.props.weather.weather.weather);
     const {weather} = this.props.weather;
+    const {city} = this.state;
+    let iconurl = "http://openweathermap.org/img/w/" + weather.icon + ".png";
     return (
       <div className="the-content">
 
@@ -24,7 +34,9 @@ class Landing extends Component {
               className="form-control" 
               placeholder="City Name..." 
               aria-label="Recipient's username" aria-describedby="basic-addon2"
-            ></input>
+              value={city}
+              onChange={this.onChange}
+            />
 
             <div className="input-group-append">
               <button 
@@ -41,7 +53,7 @@ class Landing extends Component {
 
         <div className="card">
           <div className="card-body">
-              <img src={weather.icon} />
+              <img src={iconurl} />
               <h2>City: {weather.city}</h2>
               <h3>Temperature: {weather.temperature}</h3>
               <h3>Description: {weather.description}</h3>
