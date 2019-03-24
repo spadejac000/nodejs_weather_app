@@ -4,17 +4,20 @@ import {getWeather} from '../../actions/weatherActions';
 import PropTypes from 'prop-types';
 
 class Landing extends Component {
-  state = {
-    city: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      city: ''
+    }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getWeather();
   }
 
   onChange = (e) => {
     this.setState({
-      city: e.target.value
+      [e.target.name]: e.target.value
     });
   }
 
@@ -24,12 +27,10 @@ class Landing extends Component {
     let iconurl = "http://openweathermap.org/img/w/" + weather.icon + ".png";
     return (
       <div className="the-content">
-
-        <form action="/" method="GET">
-
+        <form action="/" method="POST">
           <div className="input-group mb-3">
             <input 
-              name="cityName"
+              name="city"
               type="text" 
               className="form-control" 
               placeholder="City Name..." 
@@ -46,14 +47,12 @@ class Landing extends Component {
                 Check City
               </button>
             </div>
-
           </div>
-
         </form>
-
+        
         <div className="card">
           <div className="card-body">
-              <img src={iconurl} />
+              <img src={iconurl} alt=""/>
               <h2>City: {weather.city}</h2>
               <h3>Temperature: {weather.temperature}</h3>
               <h3>Description: {weather.description}</h3>

@@ -6,14 +6,17 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded())
 app.use(cors());
+let city;
 
-let city = 'SEATTLE';
-let api = '26318328797296678be8b407dcc293ad';
-let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api}&units=imperial`;
+app.get('/:city', (req, res) => {
+  // console.log(req.params.city)
+  let api = '26318328797296678be8b407dcc293ad';
+  let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api}&units=imperial`;
+  console.log('UURRLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ', url)
 
-app.get('/', (req, res) => {
   request(url, (error, response, body) => {
     
     let weather_json = JSON.parse(body);
@@ -27,10 +30,16 @@ app.get('/', (req, res) => {
 
     let weather_data = {weather: weather}
 
-    console.log(weather_data)
+    // console.log(weather_data)
 
     res.status(200).json(weather_data);
   });
 });
+
+app.post('/', (req, res) => {
+  city = req.body.city;
+  // console.log('city!!! ', city)
+});
+// console.log('city ', city)
 
 app.listen(5000);
