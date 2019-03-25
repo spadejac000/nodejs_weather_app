@@ -4,7 +4,7 @@ import {GET_WEATHER, WEATHER_LOADING} from './types';
 export const getWeather = () => dispatch => {
   dispatch(setWeatherLoading());
   axios
-    .get('http://localhost:5000')
+    .get('http://localhost:5000/show-city')
     .then(res => 
       dispatch({
         type: GET_WEATHER,
