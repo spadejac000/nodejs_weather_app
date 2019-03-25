@@ -11,11 +11,13 @@ app.use(bodyParser.urlencoded())
 app.use(cors());
 let city;
 
-app.get('/:city', (req, res) => {
+app.post('/get-city', (req, res) => {
   // console.log(req.params.city)
+  city = req.body.city;
+  console.log(req.body.city);
   let api = '26318328797296678be8b407dcc293ad';
   let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api}&units=imperial`;
-  console.log('UURRLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ', url)
+  // console.log('UURRLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ', url)
 
   request(url, (error, response, body) => {
     
@@ -36,10 +38,10 @@ app.get('/:city', (req, res) => {
   });
 });
 
-app.post('/', (req, res) => {
-  city = req.body.city;
-  // console.log('city!!! ', city)
-});
+// app.post('/', (req, res) => {
+  
+//   console.log('city!!! ', city)
+// });
 // console.log('city ', city)
 
 app.listen(5000);
