@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded())
 app.use(cors());
 let city;
 
-app.get('/', (req, res) => {
+app.get('/show-city', (req, res) => {
   let api = '26318328797296678be8b407dcc293ad';
   let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api}&units=imperial`;
 
@@ -26,16 +26,18 @@ app.get('/', (req, res) => {
       icon: weather_json.list[0].weather[0].icon,
     };
 
+    console.log(weather);
+
     let weather_data = {weather: weather}
 
     res.status(200).json(weather_data);
     city = '';
-  });
+  })
 });
 
-app.post('/', (req, res) => {
+app.post('/get-city', (req, res) => {
   city = req.body.city;
-  res.redirect('/')
+  res.redirect('/show-city')
 });
 
 app.listen(5000);

@@ -27,7 +27,7 @@ class Landing extends Component {
     let iconurl = "http://openweathermap.org/img/w/" + weather.icon + ".png";
     return (
       <div className="the-content">
-        <form action="/" method="POST">
+        <form action="/get-city" method="POST">
           <div className="input-group mb-3">
             <input 
               name="city"
