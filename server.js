@@ -23,9 +23,7 @@ app.get('/get-city', (req, res) => {
       let weather_json = JSON.parse(body);
 
       if(!weather_json.list) {
-        // res.status(404).send(function() {
-          console.log('error not found');
-        // });
+        res.redirect('/error');
       } else {
         let weather = {
           city,

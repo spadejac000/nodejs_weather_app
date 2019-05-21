@@ -1,6 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {getError} from '../../actions/weatherActions';
 
 export class Error extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      city: ''
+    }
+  }
+
+  componentDidMount() {
+    this.props.getError();
+  }
+
   render() {
     return (
       <div>
@@ -10,4 +23,8 @@ export class Error extends Component {
   }
 }
 
-export default Error;
+const mapStateToProps = (state) => ({
+  weather: state.weather
+})
+
+export default connect(mapStateToProps, {getError})(Error);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_WEATHER, WEATHER_LOADING} from './types';
+import {GET_WEATHER, GET_ERROR, WEATHER_LOADING} from './types';
 
 export const getWeather = () => dispatch => {
   dispatch(setWeatherLoading());
@@ -13,6 +13,16 @@ export const getWeather = () => dispatch => {
     .catch((err) => {
       dispatch({type: "No Weather Found", payload: err})
     });
+}
+
+export const getError = () => dispatch => {
+  axios
+    .get('http://localhost:5000/error')
+    .then(res =>
+      dispatch({
+        type: GET_ERROR
+      })
+    )
 }
 
 export const setWeatherLoading = () => {
